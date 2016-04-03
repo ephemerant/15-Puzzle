@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Puzzle</title>
+    <style>
+      .board {
+        display: inline-block;
+        background: rgb(100, 20, 0);
+      }
+      .square {
+        font-weight: bold;
+        display: inline-block;
+        width: 50px;
+        height: 50px;        
+        margin: 2px;
+        padding: 8px;
+        background: rgb(255, 255, 0);
+        box-sizing: border-box;
+      }
+      .empty {
+        background: none;
+        color: rgba(0, 0, 0, 0);
+      }
+    </style>
+    <script src="lib/angular.min.js"></script>
+    <script src="app/main.js"></script>
+  </head>
+
+  <body ng-app="main"
+        ng-controller="mainCtrl"
+        ng-init="initialize()">
+    <div class="board">
+      <div ng-repeat="(y, row) in grid">
+        <div ng-repeat="(x, square) in row"
+             class="square" ng-class="{ empty: !square }"
+             ng-click="move(x, y)">
+          {{square}}
+        </div>
+      </div></div>
+  </body>
+
+</html>
