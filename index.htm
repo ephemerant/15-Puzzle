@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>15 Puzzle</title>
-    <style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15 Puzzle</title>
+  <style>
+      body {
+        font-family: Helvetica;
+      }
       .board {
         display: inline-block;
         background: rgb(100, 20, 0);
@@ -23,22 +26,38 @@
         background: none;
         color: rgba(0, 0, 0, 0);
       }
+      .button {
+        background: red;        
+        margin: 2px;
+        padding: 8px;
+        color: white;
+        font-weight: bold;
+        text-shadow: 2px 2px 2px #100;
+        font-size: 130%;
+        text-align: center;
+        border: 1px solid #100;
+        border-radius: 5px;
+      }
     </style>
-    <script src="lib/angular.min.js"></script>
-    <script src="app/main.js"></script>
-  </head>
+  <script src="lib/seedrandom.min.js"></script>
+  <script src="lib/angular.min.js"></script>
+  <script src="app/main.js"></script>
+</head>
 
-  <body ng-app="main"
+<body ng-app="main"
         ng-controller="mainCtrl"
         ng-init="initialize()">
-    <div class="board">
-      <div ng-repeat="(y, row) in grid">
-        <div ng-repeat="(x, square) in row"
+  <div class="board">
+    <div ng-repeat="(y, row) in grid">
+      <div ng-repeat="(x, square) in row"
              class="square" ng-class="{ empty: !square }"
-             ng-click="move(x, y)">
-          {{square}}
-        </div>
-      </div></div>
-  </body>
+             ng-click="move(x, y)">{{square}}</div>
+    </div>
+    <center>
+      <button class="button" ng-click="scramble()">Scramble</button>
+      <button class="button" ng-click="solve(grid)">Solve</button>
+    </center>
+  </div>
+</body>
 
 </html>
